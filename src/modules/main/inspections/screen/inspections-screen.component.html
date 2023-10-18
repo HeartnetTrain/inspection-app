@@ -1,0 +1,18 @@
+<div *ngIf="!inspectionScreen?.loading; else loading" class="app-inspections__container">
+
+    <ng-container *ngIf="inspectionScreen?.inspections?.length">
+        <app-inspection-item *ngFor="let inspection of inspectionScreen?.inspections"
+                             [inspection]="inspection">
+        </app-inspection-item>
+    </ng-container>
+
+</div>
+
+<app-empty-state *ngIf="!inspectionScreen?.loading && !inspectionScreen?.inspections.length"
+                 [content]="'inspections'">
+</app-empty-state>
+
+
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>
